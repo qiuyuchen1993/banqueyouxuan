@@ -1,0 +1,35 @@
+<div class="mat-elevation-z8" style="text-align:center">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <!-- <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container> -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <!-- <th mat-header-cell *matHeaderCellDef> Title </th> -->
+            <td height="100px" mat-cell *matCellDef="let element">
+                <img src="{{element.photoLink}}" /> {{element.title}}{{element.price}}{{element.priceTag}}
+            </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+            <!-- <th mat-header-cell *matHeaderCellDef> Price </th> -->
+            <td mat-cell *matCellDef="let element "> {{element.price}} </td>
+        </ng-container>
+
+
+        <!-- <td><button mat-raised-button color="primary ">Primary</button></td> -->
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr> -->
+        <tr mat-row *matRowDef="let row;columns:displayedColumns;"></tr>
+
+    </table>
+    <button mat-raised-button color="primary" style="margin:20px auto ">上一页</button>
+    <button mat-raised-button color="warn" style="margin:20px auto " (click)="clicknextpage() ">下一页</button>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20] " showFirstLastButtons></mat-paginator> -->
+    {{currentTimeString}}
+    <img src="https://y.zdmimg.com/201907/08/5d22fe1f90f2d890.jpg_d200.jpg" />
+</div>
