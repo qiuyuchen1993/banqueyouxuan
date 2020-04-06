@@ -1,0 +1,23 @@
+mat-chip {
+    max-width: 200px;
+}
+
+mat-card {
+    max-width: 400px;
+    display: flex;
+    background-color: #2fe7ff
+}
+
+a {
+    color: rgb(230, 37, 30);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(131, 123, 118);
+    text-decoration: none;
+}
+
+font {
+    font-weight: bold;
+}

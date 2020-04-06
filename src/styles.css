@@ -1633,7 +1633,7 @@ mat-row,
 td.mat-cell,
 td.mat-footer-cell,
 th.mat-header-cell {
-    border-bottom-color: rgba(0, 0, 0, .12)
+    border-bottom-color: rgba(253, 253, 253, 0.959)
 }
 
 .mat-header-cell {
@@ -2740,7 +2740,7 @@ th.mat-header-cell {
 }
 
 .mat-toolbar {
-    background: #d7c9df;
+    background: rgb(236, 69, 69);
     color: rgba(0, 0, 0, .87)
 }
 

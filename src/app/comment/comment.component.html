@@ -1,0 +1,20 @@
+<mat-divider></mat-divider>
+
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let comment of comments">
+        <div style="color:blue">{{comment.authorName}}:</div>
+        <div>{{comment.content}}</div>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+</mat-list>
+
+<form id="dialogForm" class="ibm-row-form" method="post" (ngSubmit)="commentSave()" #dialogForm1="ngForm">
+    <mat-form-field appearance="fill">
+        <mat-label>写下你的评论</mat-label>
+        <input [(ngModel)]="currentcomment" matInput id="comment" name="comment" required style="width:100px">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="" style="margin:20px auto;left:10px" [disabled]="!dialogForm1.form.valid">提交</button>
+</form>
+
+
+<button mat-raised-button color="" style="margin:20px auto ">加载更多</button>

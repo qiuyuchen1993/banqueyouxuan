@@ -7,9 +7,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material'
-
+import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSnackBarModule } from "@angular/material";
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -27,6 +27,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
     imports: [
+        MatDividerModule,
+        MatSnackBarModule,
         MatSelectModule,
         MatCheckboxModule,
         MatExpansionModule,
@@ -52,6 +54,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
         MatToolbarModule
     ],
     exports: [
+        MatDividerModule,
+        MatSnackBarModule,
         MatSelectModule,
         MatCheckboxModule,
         MatExpansionModule,

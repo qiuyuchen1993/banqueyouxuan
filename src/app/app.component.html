@@ -1,10 +1,40 @@
 <head>
     <meta name="referrer" content="no-referrer" />
 </head>
-<mat-toolbar>
 
-    Easy Buy
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><img src="../assets/pic/logo.png" backgound="#000" width="100"></a>
 
-</mat-toolbar>
+    <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown" ngbDropdown *ngIf="!username">
+                <a class="nav-link dropdown-toggle" id="id01" href="#" ngbDropdownToggle>用户</a>
+                <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+                    <button class="dropdown-item" (click)="openRegisterDialog('register')">注册</button>
+                    <button class="dropdown-item" (click)="openRegisterDialog('login')">登陆</button>
+                </div>
+            </li>
+            <li class="nav-item dropdown" ngbDropdown *ngIf="username">
+                <a class="nav-link dropdown-toggle" id="id01" href="#" ngbDropdownToggle>{{username}}</a>
+                <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+                    <button class="dropdown-item" (click)="logout()">注销</button>
+                </div>
+            </li>
+        </ul>
 
-<app-home></app-home>
+        <mat-form-field style="padding-left: 2%; width:150px">
+            <input matInput #input maxlength="10" placeholder="请输入搜索内容" [(ngModel)]="keyword">
+        </mat-form-field>
+
+        <a style="padding-left: 23" [routerLink]="[keyword]"><button mat-raised-button color="">搜索</button></a>
+
+
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<!-- <app-home></app-home> -->

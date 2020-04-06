@@ -1,0 +1,52 @@
+<div class="mat-elevation-z8">
+
+    <div style="overflow:hidden">
+        <div><img width="100" align="left" src="{{product.photoLink}}" /></div>
+
+        <font size="3px" style="font-weight:bold">{{product.title}}<br>{{product.price}}{{product.priceTag}}</font>
+
+        <!-- <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile><img width="100" align="left" src="{{product.photoLink}}" /></mat-grid-tile>
+    </mat-grid-list> -->
+        <!-- <mat-card> -->
+        <br> 价格 {{product.price}}元
+        <a href={{product_link}}>
+            <font>
+                {{product.channel}}</font>
+        </a>
+        <br>
+        <div *ngIf="product.couponName" style="padding-left:20px">
+            优惠券 <a href={{coupon_link}}>{{product.couponName}}</a>
+        </div>
+    </div>
+    <mat-card>
+        <!-- <mat-card-header>
+
+            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+        </mat-card-header> -->
+
+        <mat-card-content>
+            <p>
+                {{product.introduction}}
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                宝贝评价
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+                查看全部
+            </mat-panel-description> -->
+            <div style="float: right">查看全部</div>
+
+        </mat-expansion-panel-header>
+
+        <app-comment *ngIf="product.id" [product_id]="product.id"></app-comment>
+
+    </mat-expansion-panel>
+
+</div>

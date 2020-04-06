@@ -1,0 +1,81 @@
+<form *ngIf="isRegister" id="dialogForm" class="ibm-row-form" method="post" #dialogForm="ngForm">
+    <mat-grid-list cols="4" rowHeight="85px">
+        <mat-grid-tile [colspan]=4 [rowspan]=1 *ngIf="!isVeriCode">
+            <div class="example-container" width="50">
+                <mat-form-field>
+                    <input matInput placeholder="请输入11位手机号" [(ngModel)]="phone" name="phone" (keyup)="onKey()">
+
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <div *ngIf="!isVeriCode&&!isNameChanged">
+            <mat-grid-tile [colspan]=4 [rowspan]=1 class="lable">{{remind}}</mat-grid-tile>
+
+            <mat-grid-tile [colspan]=1 [rowspan]=1 *ngFor="let pic of piclist,let i = index">
+                <div class="frame"><img src="{{pic}}" (click)="verifyanswer(i)"></div>
+            </mat-grid-tile>
+        </div>
+        <div *ngIf="isVeriCode&&!isNameChanged">
+            <mat-grid-tile [colspan]=3 [rowspan]=1 class="lable">
+                <mat-form-field>
+                    <input matInput placeholder="请输入短信验证" [(ngModel)]="verifycode" name="verifycode" required>
+
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]=1 [rowspan]=1 class="lable">
+                <button mat-raised-button (click)="varify_machine()" [disabled]="!dialogForm.form.valid">验证</button></mat-grid-tile>
+        </div>
+        <div *ngIf="isNameChanged">
+            <mat-grid-tile [colspan]=3 [rowspan]=1 class="lable">
+                <mat-form-field>
+                    <input matInput placeholder="请修改用户名" [(ngModel)]="changedusername" name="username" required>
+
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]=1 [rowspan]=1 class="lable">
+                <button mat-raised-button (click)="change_name()" [disabled]="!dialogForm.form.valid">修改</button></mat-grid-tile>
+        </div>
+
+        <!-- <mat-grid-tile [colspan]=1 [rowspan]=1>
+            <button mat-raised-button type="submit" [disabled]="!dialogForm.form.valid">短信验证</button></mat-grid-tile> -->
+
+    </mat-grid-list>
+</form>
+
+<form *ngIf="!isRegister" id="dialogForm1" class="ibm-row-form" method="post" #dialogForm1="ngForm">
+    <mat-grid-list cols="4" rowHeight="85px">
+        <mat-grid-tile [colspan]=4 [rowspan]=1 *ngIf="!isLoginSMSsent">
+            <div class="example-container">
+                <mat-form-field>
+                    <input matInput placeholder="请输入11位手机号" [(ngModel)]="phone" name="phone">
+
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]=4 [rowspan]=1 *ngIf="!isLoginSMSsent">
+            <div class="example-container">
+
+                <button mat-raised-button (click)="login_verify()" [disabled]="!phone">获取验证码</button>
+
+            </div>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile [colspan]=4 [rowspan]=1 *ngIf="isLoginSMSsent">
+            <div class="example-container">
+                <mat-form-field>
+                    <input matInput placeholder="输入验证码" [(ngModel)]="logincode" name="logincode" required>
+
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]=4 [rowspan]=1 *ngIf="isLoginSMSsent">
+            <div class="example-container">
+
+                <button mat-raised-button (click)="login_sendcode()" [disabled]="!logincode">登陆</button>
+
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>
