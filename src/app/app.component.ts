@@ -39,6 +39,7 @@ export class AppComponent {
       if(info.code="ok"){
         sessionStorage.removeItem('username')
         sessionStorage.removeItem('userpic')
+        sessionStorage.removeItem('token')
         this.username = sessionStorage.getItem('username')
         this.userpic = sessionStorage.getItem('userpic')
       }

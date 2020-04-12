@@ -25,12 +25,36 @@ export class CommentComponent implements OnInit {
    console.log(this.token)
     this.homesvc.get10comment(this.product_id).subscribe(
       (res)=>{
-        this.comments=res.data;console.log(this.comments);
+        this.comments=res.data;
         for (let key in this.comments){
           this.comments[key].content=this.HTMLDecode( this.comments[key].content)
         }
       }
     )
+  }
+
+  submitComment(){
+    if(this.token){
+    this.homesvc.postComment(this.token, this.currentcomment, this.product_id).subscribe(
+      (res)=>{
+        if(res.code=="OK"){
+          // console.log(res)
+          // this.comments.push(res.data);
+          this.homesvc.get10comment(this.product_id).subscribe(
+            (res)=>{
+              this.comments=res.data;
+              for (let key in this.comments){
+                this.comments[key].content=this.HTMLDecode( this.comments[key].content)
+              }
+            }
+          )
+        }
+       
+      }
+    )
+    }else{
+      this.homesvc.snackbarshow("请先登陆，再来评论")
+    }
   }
 
   HTMLEncode(html:any) {

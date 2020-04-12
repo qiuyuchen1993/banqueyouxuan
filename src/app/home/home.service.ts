@@ -133,10 +133,19 @@ const httpOptions = {
   }
 
     public get10comment(product_id ?:string){
-      return this.http.post(`https://www.bqbird.com/api/comment/get/10?discountId=${product_id}&sort=1`, {
+      return this.http.post(`https://www.bqbird.com/api/comment/get/10?discountId=${product_id}&sort=2`, {
     
   }).pipe(map(res => 
     {return new CommentMessage().deserialize(res)}
+    ), catchError(this.handleError) )
+    }
+
+
+    public postComment(token?:string, comment ?:string, product_id?:string){
+      return this.http.post(`https://www.bqbird.com/api/comment/add?token=${token}&content=${comment}&discountId=${product_id}`, {
+    
+  }).pipe(map(res => 
+    {return new Link().deserialize(res)}
     ), catchError(this.handleError) )
     }
 
@@ -179,9 +188,9 @@ const httpOptions = {
       }
     //   window.alert(errMsg);
       // const self = this;
-    //   this.snackBar.open(errMsg, "", {
-    //     duration: 5000,
-    //  });
+      this.snackBar.open(errMsg, "", {
+        duration: 5000,
+     });
       return observableThrowError(errMsg);
     }
   }
