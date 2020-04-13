@@ -10,6 +10,7 @@
                     <span style="color:blue">{{reply.authorName}} {{reply.replyAuthorName?'> '+reply.replyAuthorName:''}}:</span>
                     <span (click)="selectComment(comment, reply)">{{reply.content}}</span>
                 </li>
+                <li *ngIf="comment.hasMoreReply>0" class="reply-list-item" style="color: #007bff; text-align: center;" (click)="moreReply(comment)">更多回复</li>
             </ul>
         </div>
         <mat-divider ></mat-divider>

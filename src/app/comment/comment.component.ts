@@ -91,6 +91,18 @@ export class CommentComponent implements OnInit {
       this.homesvc.snackbarshow("请先登陆，再来评论")
     }
   }
+
+  moreReply(comment) {
+    this.homesvc.getMoreReply(comment.id, comment.time).subscribe(
+      res => {
+        if(res.code == "OK") {
+          comment.replys = res.data['replys'];
+          comment.hasMoreReply = res.data['hasMoreReply'];
+        }
+      }
+    )
+  }
+
   HTMLEncode(html: any) {
     var temp = document.createElement("div");
     (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);

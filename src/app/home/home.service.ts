@@ -12,6 +12,7 @@ import { Link } from 'src/app/shared/models/Link.model'
 import { Verifypic } from '../shared/models/Verifypic.model';
 import { Comment } from 'src/app/shared/models/Comment.model'
 import { CommentMessage } from '../shared/models/CommentMessage.model';
+import { Reply } from '../shared/models/Reply.model';
 const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -158,6 +159,14 @@ const httpOptions = {
     ), catchError(this.handleError) )
     }
 
+    public getMoreReply(comment_id, time){
+      return this.http.post(`https://www.bqbird.com/api/comment/reply/getMore/10?commentId=${comment_id}&pageSize=10&time=${time}`, {
+    
+  }).pipe(map(res => 
+    {return new Reply().deserialize(res)}
+    ), catchError(this.handleError) )
+    }
+
 //   public getcomments(token ?:string):Observable<Link>{
      
 //     return this.http.post(`https://www.bqbird.com/api/comment/get/10/?token=${token}`, {
@@ -201,5 +210,9 @@ const httpOptions = {
         duration: 5000,
      });
       return observableThrowError(errMsg);
+    }
+
+    yyyyMMddHHmmss(time:Date) {
+      return ''+time.getFullYear()+(time.getMonth()+1)+time.getDate()+time.getHours()+time.getMinutes()+time.getSeconds();
     }
   }
