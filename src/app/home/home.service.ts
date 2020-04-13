@@ -21,6 +21,7 @@ const httpOptions = {
 
   @Injectable()
   export class HomeService{
+    
     constructor(private http: HttpClient, public snackBar: MatSnackBar) {
       }
 
@@ -143,6 +144,14 @@ const httpOptions = {
 
     public postComment(token?:string, comment ?:string, product_id?:string){
       return this.http.post(`https://www.bqbird.com/api/comment/add?token=${token}&content=${comment}&discountId=${product_id}`, {
+    
+  }).pipe(map(res => 
+    {return new Link().deserialize(res)}
+    ), catchError(this.handleError) )
+    }
+
+    public postReply(token?:string, comment ?:string,commentId?:string, replyId?:string, ){
+      return this.http.post(`https://www.bqbird.com/api/comment/reply/add?token=${token}&content=${comment}&commentId=${commentId}${replyId?'&replyId='+replyId:''}`, {
     
   }).pipe(map(res => 
     {return new Link().deserialize(res)}

@@ -13,7 +13,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { HomeService } from './home/home.service';
-import { CommentComponent } from './comment/comment.component';
+import { CommentComponent, ReplyDialog } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { CommentComponent } from './comment/comment.component';
     ProductDetailComponent,
     RegisterDialogComponent,
     CommentComponent,
+    ReplyDialog
     
   ],
   imports: [
@@ -34,7 +35,7 @@ import { CommentComponent } from './comment/comment.component';
     NgbModule,
   ],
   entryComponents:[
-    RegisterDialogComponent
+    RegisterDialogComponent, ReplyDialog
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

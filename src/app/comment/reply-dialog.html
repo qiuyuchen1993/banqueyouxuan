@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>正在回复 {{data.reply?.authorName || data.comment.authorName}}</h1>
+<div mat-dialog-content>
+    <form id="dialogReplyForm" class="ibm-row-form" method="post" (ngSubmit)="data.submitReply(data.comment, currentcomment, data.reply)" #dialogFormReply="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>写下你的评论</mat-label>
+            <input [(ngModel)]="currentcomment" matInput id="comment" name="comment" required style="width:100px">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="" style="margin:20px auto;left:10px" [disabled]="!dialogFormReply.form.valid">提交</button>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+.reply-list-item, .comment-list-item {
+    padding: 14px 0px;
+}
+.reply-list-item {
+    border-top: 1px solid rgba(0, 0, 0, .12);
+}
+.comment-list {
+    list-style: none;margin-block-start:0em;
+}

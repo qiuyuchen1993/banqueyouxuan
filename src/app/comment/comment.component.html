@@ -1,13 +1,20 @@
-<mat-divider></mat-divider>
-
-<mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let comment of comments">
-        <div style="color:blue">{{comment.authorName}}:</div>
-        <div>{{comment.content}}</div>
-
-        <mat-divider></mat-divider>
-    </mat-list-item>
-</mat-list>
+<ul role="list" class="comment-list">
+    <li role="listitem" class="comment-list-item" *ngFor="let comment of comments">
+        <div>
+            <span style="color:blue">{{comment.authorName}}:</span>
+            <span (click)="selectComment(comment)">{{comment.content}}</span>
+        </div>
+        <div *ngIf="comment.replys">
+            <ul role="list" class="comment-list" style="padding-left: 14px">
+                <li role="listitem" class="reply-list-item" *ngFor="let reply of comment.replys">
+                    <span style="color:blue">{{reply.authorName}} {{reply.replyAuthorName?'> '+reply.replyAuthorName:''}}:</span>
+                    <span (click)="selectComment(comment, reply)">{{reply.content}}</span>
+                </li>
+            </ul>
+        </div>
+        <mat-divider ></mat-divider>
+    </li>
+</ul>
 
 <form id="dialogForm" class="ibm-row-form" method="post" (ngSubmit)="submitComment()" #dialogForm1="ngForm">
     <mat-form-field appearance="fill">
