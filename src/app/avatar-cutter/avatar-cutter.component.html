@@ -1,0 +1,11 @@
+<div class="text-center">
+  <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [roundCropper]="true" [aspectRatio]="3 / 3" format="png"
+  (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"></image-cropper>
+<input (change)="fileChangeEvent($event)" #file style="display: none;" type="file" accept="image/*" />
+<button class="btn btn-primary" (click)="upload()">{{imgURL?'重新上传':'上传图片'}}</button>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn" style="float: left;" (click)="onCancel()">取消</button>
+  <button type="button" class="btn" style="float: right;" [disabled]="!imgURL" (click)="onEnter()">确定</button>
+</div>

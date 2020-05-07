@@ -10,10 +10,12 @@ import { MaterialModule } from './material';
 import { HttpClientModule } from '@angular/common/http';
 import 'hammerjs';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { HomeService } from './home/home.service';
 import { CommentComponent, ReplyDialog } from './comment/comment.component';
+import { AvatarCutterComponent } from './avatar-cutter/avatar-cutter.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CommentComponent, ReplyDialog } from './comment/comment.component';
     ProductDetailComponent,
     RegisterDialogComponent,
     CommentComponent,
-    ReplyDialog
+    ReplyDialog,
+    AvatarCutterComponent
     
   ],
   imports: [
@@ -33,6 +36,7 @@ import { CommentComponent, ReplyDialog } from './comment/comment.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    ImageCropperModule
   ],
   entryComponents:[
     RegisterDialogComponent, ReplyDialog

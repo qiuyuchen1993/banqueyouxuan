@@ -22,6 +22,7 @@
             <li class="nav-item dropdown" ngbDropdown *ngIf="username">
                 <a class="nav-link dropdown-toggle" id="id01" ngbDropdownToggle>{{username}}</a>
                 <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+                    <button class="dropdown-item"><a routerLink="/userpic" class="text-dark">更新头像</a></button>
                     <button class="dropdown-item" (click)="logout()">注销</button>
                 </div>
             </li>
@@ -38,5 +39,4 @@
 </nav>
 
 <router-outlet></router-outlet>
-
 <!-- <app-home></app-home> -->

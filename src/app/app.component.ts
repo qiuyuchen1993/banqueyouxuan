@@ -4,6 +4,8 @@ import { Product } from './shared/models/Product.model.js'
 import {MatDialog } from '@angular/material/dialog';
 import {RegisterDialogComponent} from './register-dialog/register-dialog.component'
 import { HomeService } from './home/home.service.js';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AvatarCutterComponent } from './avatar-cutter/avatar-cutter.component.js';
 
 
 
@@ -64,7 +66,8 @@ export class AppComponent {
     });
   }
 
-  
- 
+  updateAvatar() {
+    this.dialog.open(AvatarCutterComponent, {height: '100%', width: '100%', data: {token: this.token}})
+  }
 
 }
